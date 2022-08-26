@@ -10,7 +10,7 @@ var error = require('./middlewares/error')
 app = express()
 
 var mongoose = require('mongoose')
-global.db = mongoose.connect('mongodb://localhost:27017//neventos')
+global.db = mongoose.connect('mongodb://localhost:27017/neventos')
 
 mongoose.connection.on('connected', function () {
   console.log('===== Conexão estabelecida com sucesso =====')
@@ -40,7 +40,6 @@ load('models')
 //middlewares
 app.use(error.notFound);
 app.use(error.serverError);
-
 
 app.listen(3000, function () {
   console.log('Aplicação no ar')
