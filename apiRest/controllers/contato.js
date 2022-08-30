@@ -1,24 +1,26 @@
-module.exports = (app) => {
+const { response } = require("express")
+
+module.exports = (app) =>{
     const Contato = app.models.contato
-    const ContatoControler = {
+    const ContatoController = {
         home: (request, response) => {
             response.send('Servidor no ar')
         },
-        listarContatos: (request, response) => {
+        listarContatos: (request, response) =>{
             Contato.find((erro, contatos) => {
-                if (erro) {
+                if(erro){
                     response.json(erro)
-                } else {
+                }else{
                     response.json(contatos)
                 }
             })
         },
-        buscarContatoPorId: (request, response) => {
-            const id = request.query.id
+        buscarContatoPorID: (request, response) => {
+            const id = request.params.id
             Contato.findById(id, (erro, contato) => {
-                if (erro) {
+                if(erro){
                     response.json(erro)
-                } else {
+                }else{
                     response.json(contato)
                 }
             })
@@ -26,52 +28,53 @@ module.exports = (app) => {
         cadastrarContato: (request, response) => {
             const contato = request.body
             Contato.create(contato, (erro, contato) => {
-                if (erro) {
+                if(erro){
                     response.json(erro)
-                } else {
+                }else{
                     response.json(contato)
                 }
             })
         },
         atualizarContato: (request, response) => {
-            const id = request.query.id
+            const id = request.params.id
             const contatoDto = request.body
             Contato.findById(id, (erro, contato) => {
-                if (erro) {
+                if(erro){
                     response.json(erro)
-                } else {
-                    if (contatoDto.cpf) {
-                        contato.cpf = contatoDto.cpf
+                }else{
+                    if(contatoDto.cpf){
+                        contato.cpf = contato.cpf
                     }
-                    if (contatoDto.nome) {
+                    if(contatoDto.nome){
                         contato.nome = contatoDto.nome
                     }
-                    if (contatoDto.telefone) {
+                    if(contatoDto.telefone){
                         contato.telefone = contatoDto.telefone
                     }
 
                     contato.save((erro, contato) => {
-                        if (erro) {
+                        if(erro){
                             response.json(erro)
-                        } else {
+                        }else{
                             response.json(contato)
                         }
                     })
+
                     response.json(contato)
                 }
             })
         },
         deletarContato: (request, response) => {
-            const id = request.query.id
-            Contato.remove(id, (erro, contato) => {
-                if (erro) {
+            const id = request.params.id
+            Contato.delete(id, (erro) => {
+                if(erro){
                     response.json(erro)
-                } else {
-                    response.json('Contato removido')
+                }else{
+                    response.json("Contato removido")
                 }
             })
         }
-
     }
-    return ContatoControler
+
+    return ContatoController;
 }
