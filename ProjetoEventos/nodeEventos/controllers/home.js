@@ -1,42 +1,40 @@
 module.exports = function (app) {
-
     var mongoose = require('mongoose');
-    var Usuario = mongoose.model('usuarios')
-
+    var Usuario = mongoose.model('usuarios');
 
     var HomeController = {
-        index: function (request, response) {
-            response.render('home/index')
+        index: function (req, res) {
+            res.render('home/index');
         },
-
         login: function (request, response) {
-            var nome = request.body.usuario.nome
-            var senha = request.body.usuario.senha
 
-            var query = { 'nome': nome, 'senha': senha }
+            var nome = request.body.usuario.nome;
+            var senha = request.body.usuario.senha;
+
+            var query = { 'nome': nome, 'senha': senha };
 
             Usuario.findOne(query).select('nome senha')
                 .exec(function (erro, usuario) {
                     if (erro) {
-                        res.redirect('/')
+                        response.redirect('/');
                     }
                     else {
-                        request.session.usuario = usuario
-                        response.redirect('/menu')
+                        request.session.usuario = usuario;
+                        response.redirect('/menu');
                     }
-                })
+                });
         },
 
         logout: function (request, response) {
-            request.session.destroy()
-            response.redirect('/')
+            request.session.destroy();
+            response.redirect('/');
         },
 
-        //cadastro usuario
+        //cadastro de usuários
         novoUsuario: function (request, response) {
-            var nome = request.body.usuario.nome
-            var senha = request.body.usuario.senha
-            var confirma = request.body.usuario.confirma
+            var nome = request.body.usuario.nome;
+            var senha = request.body.usuario.senha;
+            var confirma = request.body.usuario.confirma;
 
             if ((senha != confirma) || nome.trim().length == 0) {
                 response.redirect('/');
@@ -54,6 +52,5 @@ module.exports = function (app) {
             }
         }
     };
-    return HomeController
-}
-
+    return HomeController;
+};

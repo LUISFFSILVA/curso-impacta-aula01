@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cadastro de Eventos e Convidados - Login</title>
+    <title>Cadastro de Eventos</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
@@ -11,10 +11,10 @@
     <header>
         <p>Bem-vindo, <%= usuario.nome %>
         </p>
-        <h1>Lista de Eventos</h1>
-        <h4>Selecione uma opção na lista para executá-la</h4>
+        <h1>Lista de Eventos do Webservice</h1>
     </header>
     <section>
+        <!--será implementado em breve-->
         <table>
             <thead>
                 <tr>
@@ -35,11 +35,17 @@
                         <td>
                             <%= evento.preco %>
                         </td>
+                        <td>
+                            <a href="/pagamento/<%= evento.descricao %>/<%= evento.preco %>">
+                                comprar este evento</a>
+                        </td>
                     </tr>
                     <% }) %>
             </tbody>
         </table>
-
+    </section>
+    <section>
+        <a href='/menu'>Voltar ao menu</a>
     </section>
     <footer>
         <small>Sistema de Cadastro de Eventos e Convidados</small>

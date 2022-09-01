@@ -5,4 +5,4 @@ exports.notFound = function (request, response, next) {
    exports.serverError = function (error, request, response, next) {
     response.status(500);
     response.render('erroServidor', { error: error });
-   }
+   };

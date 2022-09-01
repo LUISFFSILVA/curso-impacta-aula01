@@ -1,8 +1,9 @@
-module.exports = function(app){
-    var home = app.controllers.home
-    app.get('/', home.index)
-    app.post('/login', home.login)
-    app.get('/logout', home.logout)
+module.exports = function (app){
+    var home = app.controllers.home;
+    app.get('/', home.index);
+    app.post('/login', home.login);
+    app.get('/logout', home.logout);
 
-    app.post('/novoUsuario', home.novoUsuario)
-}
+    app.post('/novoUsuario', home.novoUsuario);
+        
+};
