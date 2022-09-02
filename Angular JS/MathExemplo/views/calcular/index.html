@@ -8,9 +8,9 @@
     <title>MathExemplo</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
-    <script src="factories/mathFactory.js"></script>
-    <script src="services/mathService.js"></script>
-    <script src="controllers/appController.js"></script>
+    <script src="../../factories/mathFactory.js"></script>
+    <script src="../../services/mathService.js"></script>
+    <script src="../../controllers/appController.js"></script>
 
 </head>
 
@@ -18,12 +18,10 @@
 <body ng-controller="Principal as ctl">
     <!--coloca o apelido 'ctl' na controller chamada Principal-->
 
-    <div ng-view></div>
-
-    <!-- <input type="number" ng-model="ctl.valor" placeholder="Digite um numero" ng-keyup="ctl.calcularQuadrado()">
+    <input type="number" ng-model="ctl.valor" placeholder="Digite um numero" ng-keyup="ctl.calcularQuadrado()">
     <button ng-click="ctl.calcularQuadrado()">Calcular quadrado</button>
     <br>
-    <div ng-bind="ctl.resultado"></div> -->
+    <div ng-bind="ctl.resultado"></div>
 </body>
 
 </html>

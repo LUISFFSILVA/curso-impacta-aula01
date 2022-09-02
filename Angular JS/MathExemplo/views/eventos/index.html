@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventos">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <script src="../../factories/mathFactory.js"></script>
+    <script src="../../services/mathService.js"></script>
+    <script src="../../controllers/eventosController.js"></script>
+
+</head>
+
+
+<body ng-controller="Principal as ctl">
+    <!--coloca o apelido 'ctl' na controller chamada Principal-->
+    <h2>Lista de eventos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+
+        <tbody ng-repeat="evento in ctl.eventos">
+            <tr>
+                <td>
+                    {{ evento.descricao }}
+                </td>
+                <td>
+                    {{ evento.data }}
+                </td>
+                <td>
+                    {{ evento.preco }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
