@@ -3,10 +3,12 @@ angular.module('eventos')
         '$http',
         function ($http) {
             var self = this
-            self.eventos = []
+
             $http.get('http://localhost:3200/eventos')
                 .then(function (response) {
                     self.eventos = response.data
+                    console.log(self.eventos)
+
                 }, function (error) {
                     console.log(`Erro: $(error)`)
                 })
